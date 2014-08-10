@@ -40,6 +40,9 @@ namespace Inviticus
 
         private void save_weight(object sender, EventArgs e)
         {
+            DateTime bd = (DateTime)datePicker.Value;
+            dateOfMeasurement.Text = bd.ToString("d");
+
             _babyViewModel.AddNewWeight();
             NavigationService.Navigate(new Uri("/WeightPage.xaml", UriKind.RelativeOrAbsolute));
         }

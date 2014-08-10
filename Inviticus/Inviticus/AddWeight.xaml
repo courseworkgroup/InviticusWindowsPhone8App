@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -29,9 +30,12 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
-                <StackPanel>
-                    <TextBlock Text="Date of measurement" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
-                    <TextBox Name="dateOfMeasurement" Text="{Binding NewWeight.Date, Mode=TwoWay}"/>
+                <StackPanel>                 
+                    <StackPanel Margin="0,12,0,0">
+                        <TextBlock Text="Date of measurement" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
+                        <toolkit:DatePicker x:Name="datePicker"/>
+                    </StackPanel>
+                    <TextBox Name="dateOfMeasurement" Text="{Binding NewWeight.Date, Mode=TwoWay}" Visibility="Collapsed"/>
                     <TextBlock Text="Weight in kgs" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
                     <TextBox Name="weightMeasured" Text="{Binding NewWeight.BabyWeight, Mode=TwoWay}"/>
                     <StackPanel Margin="0,12,0,0">
