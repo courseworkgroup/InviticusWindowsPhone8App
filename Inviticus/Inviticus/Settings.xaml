@@ -1,0 +1,83 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Inviticus.Settings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:local="clr-namespace:Inviticus"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <!--Pivot Control-->
+        <phone:Pivot Title="SETTINGS">
+            <!--Pivot item one-->
+            <phone:PivotItem Header="general">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ScrollViewer Height="500">
+                    <StackPanel Grid.Row="0">
+                        <StackPanel>
+                            <TextBlock Text="current profiles" TextWrapping="NoWrap" Style="{StaticResource PhoneTextLargeStyle}" />
+                            <TextBlock Text="tap and hold a profile to delete it" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                <ScrollViewer Height="350">
+                                <phone:LongListSelector x:Name="llsBabies" 
+                                    Margin="0,0,-12,0"
+                                    MaxHeight="350"
+                                    ItemsSource="{Binding Babies}" 
+                                    SelectionChanged="llsBabies_SelectionChanged">
+                                        <phone:LongListSelector.Resources>
+                                            <local:List_ClassConverter x:Key="List_ClassConverter"/>
+                                        </phone:LongListSelector.Resources>
+                                        <phone:LongListSelector.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Margin="0,0,0,17">
+                                                <StackPanel Orientation="Horizontal">
+                                                        <Image Source="{Binding Converter={StaticResource List_ClassConverter}}" Width="100" Height="100"/>
+                                                        
+                                                        <TextBlock Text="{Binding Name,StringFormat='Name: {0}'}" 
+                                                        TextWrapping="Wrap"
+                                                        MaxWidth="300"
+                                                        Style="{StaticResource PhoneTextLargeStyle}"/>
+                                                </StackPanel>                                                
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </phone:LongListSelector.ItemTemplate>                                    
+                                </phone:LongListSelector>
+                                </ScrollViewer>
+
+                            </StackPanel>
+                        <StackPanel Grid.Row="1">
+                            <Button Name="changeAppBackground" Background="{StaticResource PhoneAccentBrush}" Content="Change app background" Margin="0,20,0,0" Click="changeAppBackground_Click"/>
+                        </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </phone:PivotItem>
+
+            <!--Pivot item two-->
+            <phone:PivotItem Header="about">
+            </phone:PivotItem>
+        </phone:Pivot>
+    </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="False">
+            <shell:ApplicationBarIconButton IconUri="/Assets/Icons/add.png" 
+                                            Text="add baby" 
+                                            Click="ApplicationBarAddButton_Click" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>

@@ -1,0 +1,107 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Inviticus.Registration"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="registration" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <ScrollViewer>
+                <StackPanel>                    
+                   <StackPanel Margin="0,12,0,0">
+                        <TextBlock Text="Baby Photo" Style="{StaticResource PhoneTextLargeStyle}"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Image x:Name="babyphoto" Width="200" Height="200" />
+                            <Button Name="choosephoto" BorderThickness="3" HorizontalAlignment="Right" Height="70" Width="200" Margin="20,0,0,0" Content="Choose photo" Click="choosephoto_Click" />                           
+                        </StackPanel>
+                        <TextBox Name="babyPhoto" Text="{Binding Baby.PhotoURI, Mode=TwoWay}" Visibility="Collapsed"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="Baby Name" Style="{StaticResource PhoneTextLargeStyle}"/>
+                        <TextBox Name="babyName" Text="{Binding Baby.Name, Mode=TwoWay}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,12,0,0">
+                        <TextBlock Text="Date of Birth" Style="{StaticResource PhoneTextLargeStyle}"/>
+                        <TextBox x:Name="birthDate" Text="{Binding Baby.BirthDate , Mode=TwoWay}" LayoutUpdated="weight_Date"/>
+                        <TextBox x:Name="weightDate" Text="{Binding NewWeight.Date , Mode=TwoWay}" Visibility="Collapsed"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,12,0,0">
+                        <TextBlock Text="Weight at birth" Style="{StaticResource PhoneTextLargeStyle}"/>
+                        <TextBox Name="weight" Text="{Binding NewWeight.BabyWeight, Mode=TwoWay}" BorderBrush="{StaticResource PhoneBorderBrush}"/>
+                    </StackPanel> 
+                    <StackPanel Margin="0,12,0,0">
+                            <TextBlock Text="Sex" Style="{StaticResource PhoneTextLargeStyle}"/>
+                        <StackPanel Orientation="Horizontal" Margin="3,0,-3,0">
+                            <RadioButton GroupName="gender" Checked="maleChecked" Name="maleradiobutton"  BorderThickness="3" Background="Transparent" VerticalAlignment="Center"/>
+                            <TextBlock Text="Male" Style="{StaticResource PhoneTextLargeStyle}"/>                            
+                            <RadioButton GroupName="gender" Checked="femaleChecked" Name="femaleradiobutton" BorderThickness="3" Background="Transparent"/>
+                            <TextBlock Text="Female" Style="{StaticResource PhoneTextLargeStyle}"/>
+                            <TextBox Name="gender" Text="{Binding Baby.Gender, Mode=TwoWay}" Visibility="Collapsed" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Margin="0,12,0,0">
+                        <TextBlock Text="Father's Names" Style="{StaticResource PhoneTextLargeStyle}"/>
+                        <TextBox Name="fatherName" Text="{Binding Baby.FatherName, Mode=TwoWay}" />
+                    </StackPanel>                    
+                    <StackPanel Margin="0,12,0,0">
+                        <TextBlock Text="Mother's Name" Style="{StaticResource PhoneTextLargeStyle}" />
+                        <TextBox Name="motherName" Text="{Binding Baby.MotherName, Mode=TwoWay}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,12,0,0">
+                        <TextBlock Text="Weight Comment" Style="{StaticResource PhoneTextLargeStyle}"/>
+                        <StackPanel Orientation="Horizontal" Margin="3,0,-3,0">
+                            <RadioButton GroupName="weightComment" Checked="obeseChecked" Name="obeseradiobutton"  BorderThickness="3" Background="Transparent" VerticalAlignment="Center"/>
+                            <TextBlock Text="Obese" Style="{StaticResource PhoneTextLargeStyle}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3,0,-3,0">
+                            <RadioButton GroupName="weightComment" Checked="goodChecked" Name="goodradiobutton"  BorderThickness="3" Background="Transparent" VerticalAlignment="Center"/>
+                            <TextBlock Text="Good" Style="{StaticResource PhoneTextLargeStyle}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3,0,-3,0">
+                            <RadioButton GroupName="weightComment" Checked="averageChecked" Name="averageradiobutton"  BorderThickness="3" Background="Transparent" VerticalAlignment="Center"/>
+                            <TextBlock Text="Average" Style="{StaticResource PhoneTextLargeStyle}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3,0,-3,0">
+                            <RadioButton GroupName="weightComment" Checked="badChecked" Name="badradiobutton"  BorderThickness="3" Background="Transparent" VerticalAlignment="Center"/>
+                            <TextBlock Text="Bad" Style="{StaticResource PhoneTextLargeStyle}"/>
+                        </StackPanel>
+                        <TextBox Name="weightComment" Text="{Binding NewWeight.WeightComment, Mode=TwoWay}" Visibility="Collapsed" />
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="False">
+            <shell:ApplicationBarIconButton IconUri="/Assets/Icons/save.png" 
+                                            Text="save" 
+                                            Click="ApplicationBarSaveButton_Click" />
+            <shell:ApplicationBarIconButton IconUri="/Assets/Icons/cancel.png" 
+                                            Text="cancel" 
+                                            Click="ApplicationBarCancelCourseButton_Click_1" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>

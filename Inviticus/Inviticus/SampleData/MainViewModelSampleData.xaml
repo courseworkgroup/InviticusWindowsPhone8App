@@ -1,0 +1,39 @@
+﻿<vm:MainViewModel
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="clr-namespace:Inviticus.ViewModels"
+    SampleProperty="Sample Text Property Value">
+
+    <vm:MainViewModel.Items>
+        <vm:ItemViewModel LineOne="profile" LineTwo="Maecenas praesent accumsan bibendum" LineThree="Maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur"/>
+        <vm:ItemViewModel LineOne="charts" LineTwo="Dictumst eleifend facilisi faucibus" LineThree="Pharetra placerat pulvinar sagittis senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent"/>
+        <vm:ItemViewModel LineOne="immunization" LineTwo="Habitant inceptos interdum lobortis" LineThree="Accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat"/>
+    </vm:MainViewModel.Items>
+    <vm:MainViewModel.Items2>
+        <vm:ItemViewModel LineOne="dd/mm/yyyy" LineTwo="activity to be done"/>
+        <vm:ItemViewModel LineOne="dd/mm/yyyy" LineTwo="activity to be carried out"/>
+        <vm:ItemViewModel LineOne="dd/mm/yyyy" LineTwo="activity to be satisfied"/>
+        <vm:ItemViewModel LineOne="dd/mm/yyyy" LineTwo="activity that shall be taking your time"/>
+    </vm:MainViewModel.Items2>
+    <vm:MainViewModel.Items3>
+        <vm:ItemViewModel LineOne="website.co.uk" LineTwo="some new thing that they have decided to tell us about"/>
+        <vm:ItemViewModel LineOne="website.co.uk" LineTwo="some new thing that they have decided to tell us about"/>
+        <vm:ItemViewModel LineOne="website.co.uk" LineTwo="some new thing that they have decided to tell us about"/>
+        <vm:ItemViewModel LineOne="website.co.uk" LineTwo="some new thing that they have decided to tell us about"/>
+        <vm:ItemViewModel LineOne="website.co.uk" LineTwo="some new thing that they have decided to tell us about"/>
+        <vm:ItemViewModel LineOne="website.co.uk" LineTwo="some new thing that they have decided to tell us about"/>
+    </vm:MainViewModel.Items3>
+    <vm:MainViewModel.Items4>
+        <vm:ItemViewModel Text ="baby one"/>
+        <vm:ItemViewModel Text ="baby two"/>
+        <vm:ItemViewModel Text="baby three"/>
+    </vm:MainViewModel.Items4>
+    <vm:MainViewModel.Items5>
+        <vm:ItemViewModel ID="0"  LineOne="Vaccine" LineTwo="time it is given" LineThree="Description for what shall happen"/>
+        <vm:ItemViewModel ID="1"  LineOne="Vaccine" LineTwo="time it is given" LineThree="Description for what shall happen"/>
+        <vm:ItemViewModel ID="2"  LineOne="Vaccine" LineTwo="time it is given" LineThree="Description for what shall happen"/>
+        <vm:ItemViewModel ID="3"  LineOne="Vaccine" LineTwo="time it is given" LineThree="Description for what shall happen"/>
+        <vm:ItemViewModel ID="4"  LineOne="Vaccine" LineTwo="time it is given" LineThree="Description for what shall happen"/>
+        <vm:ItemViewModel ID="5"  LineOne="Vaccine" LineTwo="time it is given" LineThree="Description for what shall happen"/>
+    </vm:MainViewModel.Items5>
+</vm:MainViewModel>
