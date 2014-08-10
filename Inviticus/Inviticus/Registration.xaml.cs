@@ -50,6 +50,8 @@ namespace Inviticus
             DataContext = _babyViewModel;
 
             _babyViewModel.InitializeNewWeight();
+
+            
         }
 
         private void choosephoto_Click(object sender, RoutedEventArgs e)
@@ -88,7 +90,15 @@ namespace Inviticus
 
             _babyViewModel.AddNewWeight();
             _babyViewModel.Save();
-            NavigationService.Navigate(new Uri("/Settings.xaml?", UriKind.RelativeOrAbsolute));
+
+            if (info.babyID != 0) NavigationService.Navigate(new Uri("/Settings.xaml?", UriKind.RelativeOrAbsolute));
+            else
+            {
+                info.babyID = 1;
+                info.saveToIsolatedStorage();
+                NavigationService.Navigate(new Uri("/MainPage.xaml?babyid=", UriKind.RelativeOrAbsolute));
+            }
+            
 
         }
 
