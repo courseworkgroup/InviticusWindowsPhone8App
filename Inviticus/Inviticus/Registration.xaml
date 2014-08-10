@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -43,10 +44,18 @@
                         <TextBox Name="babyName" Text="{Binding Baby.Name, Mode=TwoWay}"/>
                     </StackPanel>
                     <StackPanel Margin="0,12,0,0">
+                        <TextBlock Text="Date of Birth" Style="{StaticResource PhoneTextLargeStyle}" />
+                        <toolkit:DatePicker x:Name="datePicker"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBox x:Name="birthDate" Text="{Binding Baby.BirthDate , Mode=TwoWay}" Visibility="Collapsed"/>
+                        <TextBox x:Name="weightDate" Text="{Binding NewWeight.Date , Mode=TwoWay}" Visibility="Collapsed"/>
+                    </StackPanel>
+                    <!--<StackPanel Margin="0,12,0,0">
                         <TextBlock Text="Date of Birth" Style="{StaticResource PhoneTextLargeStyle}"/>
                         <TextBox x:Name="birthDate" Text="{Binding Baby.BirthDate , Mode=TwoWay}" LayoutUpdated="weight_Date"/>
                         <TextBox x:Name="weightDate" Text="{Binding NewWeight.Date , Mode=TwoWay}" Visibility="Collapsed"/>
-                    </StackPanel>
+                    </StackPanel>-->
                     <StackPanel Margin="0,12,0,0">
                         <TextBlock Text="Weight at birth" Style="{StaticResource PhoneTextLargeStyle}"/>
                         <TextBox Name="weight" Text="{Binding NewWeight.BabyWeight, Mode=TwoWay}" BorderBrush="{StaticResource PhoneBorderBrush}"/>

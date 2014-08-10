@@ -82,6 +82,10 @@ namespace Inviticus
             if (fileName != null)
                 babyPhoto.Text = fileName;
 
+            DateTime bd = (DateTime)datePicker.Value;
+            birthDate.Text = bd.ToString("d");
+            weightDate.Text = bd.ToString("d");
+
             _babyViewModel.AddNewWeight();
             _babyViewModel.Save();
             NavigationService.Navigate(new Uri("/Settings.xaml?", UriKind.RelativeOrAbsolute));
@@ -103,10 +107,10 @@ namespace Inviticus
             gender.Text = "Female";
         }
 
-        private void weight_Date(object sender, EventArgs e)
-        {
-            weightDate.Text = birthDate.Text;
-        }
+        //private void weight_Date(object sender, EventArgs e)
+        //{
+        //    weightDate.Text = birthDate.Text;
+        //}
 
         private void obeseChecked(object sender, RoutedEventArgs e)
         {
