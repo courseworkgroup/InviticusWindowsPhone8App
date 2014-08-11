@@ -24,16 +24,16 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="{Binding LineOne}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Name="VaccineTB" Text="" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
-                <TextBlock Text="description" TextWrapping="Wrap" Style="{StaticResource PhoneTextTitle2Style}"/>
+                <TextBlock Text="Description" TextWrapping="Wrap" Style="{StaticResource PhoneTextTitle2Style}"/>
                 <StackPanel Margin="12,12,0,0">
-                    <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap"/>
-                    <TextBlock Text="{Binding LineThree}" TextWrapping="Wrap"/>
+                    <TextBlock Name="PeriodTB" Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}"/>
+                    <TextBlock Name="DetailsTB" Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}"/>
                     <StackPanel Orientation="Horizontal">
                         <CheckBox Name="administered" VerticalAlignment="Center"/>
                         <TextBlock Text="Administered" VerticalAlignment="Center" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>

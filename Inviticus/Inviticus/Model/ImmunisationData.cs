@@ -111,6 +111,27 @@ namespace Inviticus.Model
                 }
             }
 
+            private string _dateTaken;
+            [Column(DbType = "nvarchar(255)", CanBeNull = false)]
+            public string DateTaken
+            {
+                get
+                {
+                    return _dateTaken;
+                }
+
+                set
+                {
+                    if (_dateTaken != value)
+                    {
+                        NotifyPropertyChanging("DateTaken");
+                        _dateTaken = value;
+                        NotifyPropertyChanged("DateTaken");
+                    }
+                }
+            }
+
+
             private bool _immunizationTaken;
             [Column(DbType = "nvarchar(255)", CanBeNull = false)]
             public bool ImmunizationTaken

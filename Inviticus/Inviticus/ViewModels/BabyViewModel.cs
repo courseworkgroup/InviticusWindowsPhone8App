@@ -20,6 +20,8 @@ namespace Inviticus.ViewModels
 
         public Weight BirthWeight { get;  private set; }
 
+        public ImmunisationData Vaccine { get; private set; }
+
         private Weight _newWeight;
 
         public Weight NewWeight
@@ -86,14 +88,9 @@ namespace Inviticus.ViewModels
                 .Where(n => n.BabyId == this.Baby.Id)
                 .ToList();
             this.Weight = new ObservableCollection<Weight>(weightList);
-            foreach (Weight weight in weightList)
-            {
-                if (weight.BabyId == this.Baby.Id && weight.Date.Equals(this.Baby.BirthDate))
-                {
-                    BirthWeight = weight;
-                }
-                break;
-            }
+
+            BirthWeight = context.Weights.Where(n => n.Date == n.Baby.BirthDate).FirstOrDefault();
+
         }
 
         private void LoadImmunisationData()
@@ -147,6 +144,33 @@ namespace Inviticus.ViewModels
             LoadImmunisationData();
         }
 
+        public void VaccineChoosen(int value)
+        {
+           this.Vaccine = context.ImmunisationDatas.Where(n => n.ImmunisationDataId == value).FirstOrDefault();
+        }
+
+        public void updateImmunisationTaken()
+        {
+            this.Baby.IsImmunisationDataComplete = true;
+            context.SubmitChanges();
+
+        }
+
+        public void updatePhotoURI(string newPhoto)
+        {
+            this.Baby.PhotoURI = newPhoto;
+            context.SubmitChanges();
+        }
+
+        public void updateImmunisationData(string date, bool value, int location)
+        {
+            NewImmunisationData = new ImmunisationData();
+            NewImmunisationData = context.ImmunisationDatas.Where(b => b.ImmunisationDataId == location).FirstOrDefault();
+            NewImmunisationData.DateTaken = date;
+            NewImmunisationData.ImmunizationTaken = value;
+
+            context.SubmitChanges();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)

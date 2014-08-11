@@ -35,6 +35,7 @@
                         <StackPanel Margin="12">
                             <TextBlock Text="{Binding Immunisation}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
                             <TextBlock Text="{Binding ImmunisationPeriod}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBlock Text="{Binding ImmunisationDataId}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
                         </StackPanel>
                     </DataTemplate>
                 </phone:LongListSelector.ItemTemplate>
