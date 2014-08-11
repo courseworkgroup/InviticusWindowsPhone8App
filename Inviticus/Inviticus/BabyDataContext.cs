@@ -15,6 +15,7 @@ namespace Inviticus
         // Specify a single table for the to-do items.
         public Table<Baby> Babies;
         public Table<Weight> Weights;
+        public Table<ImmunisationData> ImmunisationDatas;
 
         // Specify the connection string as a static, used in main page and app.xaml.
         public static string DBConnectionString = "Data Source=isostore:/Babies.sdf";
@@ -24,6 +25,7 @@ namespace Inviticus
         {
             this.Babies = this.GetTable<Baby>();
             this.Weights = this.GetTable<Weight>();
+            this.ImmunisationDatas = this.GetTable<ImmunisationData>();
         }
 
     }

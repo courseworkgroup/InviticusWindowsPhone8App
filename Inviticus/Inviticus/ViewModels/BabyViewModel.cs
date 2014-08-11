@@ -16,6 +16,8 @@ namespace Inviticus.ViewModels
 
         public ObservableCollection<Weight> Weight { get; private set; }
 
+        public ObservableCollection<ImmunisationData> ImmunisationData { get; private set; }
+
         public Weight BirthWeight { get;  private set; }
 
         private Weight _newWeight;
@@ -30,6 +32,21 @@ namespace Inviticus.ViewModels
             {
                 _newWeight = value;
                 NotifyPropertyChanged("NewWeight");
+            }
+        }
+
+        private ImmunisationData _newImmunisationData;
+
+        public ImmunisationData NewImmunisationData
+        {
+            get
+            {
+                return _newImmunisationData;
+            }
+            set
+            {
+                _newImmunisationData = value;
+                NotifyPropertyChanged("NewImmunisationData");
             }
         }
 
@@ -60,6 +77,7 @@ namespace Inviticus.ViewModels
             context.SubmitChanges();
 
             LoadWeights();
+            LoadImmunisationData();
         }
 
         private void LoadWeights()
@@ -78,6 +96,12 @@ namespace Inviticus.ViewModels
             }
         }
 
+        private void LoadImmunisationData()
+        {
+            List<ImmunisationData> immunisationDataList = context.ImmunisationDatas.Where(n => n.BabyId == this.Baby.Id).ToList();
+            this.ImmunisationData = new ObservableCollection<ImmunisationData>(immunisationDataList);
+
+        }
         
         public void Save()
         {
@@ -98,11 +122,29 @@ namespace Inviticus.ViewModels
             NewWeight.WeightComment = "";
         }
 
+        public void InitializeNewImmunisationData()
+        {
+            NewImmunisationData = new ImmunisationData();
+            NewImmunisationData.Baby = this.Baby;
+            NewImmunisationData.Immunisation = "";
+            NewImmunisationData.ImmunizationTaken = false;
+            NewImmunisationData.Date = "";
+            NewImmunisationData.ImmunisationDetails = "";
+            NewImmunisationData.ImmunisationPeriod = "";
+        }
+
         public void AddNewWeight()
         {
             context.Weights.InsertOnSubmit(NewWeight);
             context.SubmitChanges();
             LoadWeights();
+        }
+
+        public void AddNewImmunisationData()
+        {
+            context.ImmunisationDatas.InsertOnSubmit(NewImmunisationData);
+            context.SubmitChanges();
+            LoadImmunisationData();
         }
 
 

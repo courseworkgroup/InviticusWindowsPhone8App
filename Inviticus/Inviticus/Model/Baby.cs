@@ -26,6 +26,19 @@ namespace Inviticus.Model
                     weight.Baby = null;
                 }
              );
+
+            _immunisationData = new EntitySet<ImmunisationData>(
+               immunisationData =>
+               {
+                   NotifyPropertyChanging("ImmunisationData");
+                   immunisationData.Baby = this;
+               },
+               immunisationData =>
+               {
+                   NotifyPropertyChanging("ImmunisationData");
+                   immunisationData.Baby = null;
+               }
+            );
         }
 
         private int _id;
@@ -169,6 +182,23 @@ namespace Inviticus.Model
             }
         }
 
+        private bool _isImmunisationDataComplete;
+
+        [Column]
+        public bool IsImmunisationDataComplete
+        {
+            get { return _isImmunisationDataComplete; }
+            set
+            {
+                if (_isImmunisationDataComplete != value)
+                {
+                    NotifyPropertyChanging("IsComplete");
+                    _isImmunisationDataComplete = value;
+                    NotifyPropertyChanged("IsComplete");
+                }
+            }
+        }
+
         private EntitySet<Weight> _weight;
 
         [Association(Name = "FK_Baby_Weight", Storage = "_weight", ThisKey = "Id", OtherKey = "WeightId")]
@@ -181,6 +211,22 @@ namespace Inviticus.Model
             set
             {
                 _weight.Assign(value);
+            }
+        }
+
+
+        private EntitySet<ImmunisationData> _immunisationData;
+
+        [Association(Name = "FK_Baby_immunisationData", Storage = "_immunisationData", ThisKey = "Id", OtherKey = "ImmunisationDataId")]
+        public EntitySet<ImmunisationData> ImmunisationData
+        {
+            get
+            {
+                return _immunisationData;
+            }
+            set
+            {
+                _immunisationData.Assign(value);
             }
         }
 

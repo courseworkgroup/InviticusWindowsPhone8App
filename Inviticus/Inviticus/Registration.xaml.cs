@@ -19,6 +19,7 @@ namespace Inviticus
     public partial class Registration : PhoneApplicationPage
     {
         SharedInformation info = SharedInformation.getInstance();
+        ComputeImmunization comp = ComputeImmunization.getInstance();
         PhotoChooserTask photoChooserTask;
         public string fileName { get; private set; }
 
@@ -96,6 +97,13 @@ namespace Inviticus
             {
                 info.babyID = 1;
                 info.saveToIsolatedStorage();
+
+                //Compute immunisation dates
+                DateTime date = new DateTime();
+                _babyViewModel = new BabyViewModel(info.babyID);
+                date = Convert.ToDateTime(_babyViewModel.Baby.BirthDate);
+                comp.computeImmunizationData(date);
+               
                 NavigationService.Navigate(new Uri("/MainPage.xaml?babyid=", UriKind.RelativeOrAbsolute));
             }
             

@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Data;
 using System.Globalization;
 using System.Windows.Media;
+using Inviticus.ViewModels;
 
 namespace Inviticus
 {
@@ -23,6 +24,7 @@ namespace Inviticus
     public partial class Settings : PhoneApplicationPage
     {
         SharedInformation info = SharedInformation.getInstance();
+        ComputeImmunization comp = ComputeImmunization.getInstance();
         PhotoChooserTask photoChooserTask;
 
         public Settings()
@@ -70,6 +72,13 @@ namespace Inviticus
 
             info.babyID = (llsBabies.SelectedItem as Baby).Id;
             info.saveToIsolatedStorage();
+
+            //Compute immunisation dates
+            DateTime date = new DateTime();
+            BabyViewModel _babyViewModel = new BabyViewModel(info.babyID);
+            date = Convert.ToDateTime(_babyViewModel.Baby.BirthDate);
+            comp.computeImmunizationData(date);
+
             NavigationService.Navigate(new Uri("/MainPage.xaml?babyid=" + (llsBabies.SelectedItem as Baby).Id, UriKind.RelativeOrAbsolute));
             llsBabies.SelectedItem = null;
         }
