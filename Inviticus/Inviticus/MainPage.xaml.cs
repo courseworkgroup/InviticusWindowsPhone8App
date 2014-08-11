@@ -10,6 +10,10 @@ using Microsoft.Phone.Shell;
 using Inviticus.Resources;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
+using System.Windows.Documents;
+using System.Windows.Media.Animation;
+using System.Windows.Input;
+using System.Windows.Shapes;
 
 namespace Inviticus
 {
@@ -23,10 +27,15 @@ namespace Inviticus
         {
             
             InitializeComponent();
+            Loaded += MainPage_Loaded;
 
             // Set the data context of the listbox control to the sample data
             DataContext = App.ViewModel;
                         
+        }
+        void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            NavigationService.RemoveBackEntry();
         }
 
         // Load data for the ViewModel Items
