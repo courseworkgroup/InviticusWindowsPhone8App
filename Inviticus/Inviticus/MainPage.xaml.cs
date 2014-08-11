@@ -33,6 +33,7 @@ namespace Inviticus
             DataContext = App.ViewModel;
                         
         }
+		
         void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             NavigationService.RemoveBackEntry();

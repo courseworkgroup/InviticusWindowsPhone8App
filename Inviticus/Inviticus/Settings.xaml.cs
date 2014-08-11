@@ -74,11 +74,16 @@ namespace Inviticus
             info.saveToIsolatedStorage();
 
             //Compute immunisation dates
-            DateTime date = new DateTime();
             BabyViewModel _babyViewModel = new BabyViewModel(info.babyID);
-            date = Convert.ToDateTime(_babyViewModel.Baby.BirthDate);
-            comp.computeImmunizationData(date);
 
+            if (!_babyViewModel.Baby.IsImmunisationDataComplete)
+            {
+                DateTime date = new DateTime();
+                date = Convert.ToDateTime(_babyViewModel.Baby.BirthDate);
+                comp.computeImmunizationData(date);
+            }
+
+			
             NavigationService.Navigate(new Uri("/MainPage.xaml?babyid=" + (llsBabies.SelectedItem as Baby).Id, UriKind.RelativeOrAbsolute));
             llsBabies.SelectedItem = null;
         }
@@ -99,9 +104,7 @@ namespace Inviticus
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             Baby MyList_Class = (Baby)value;
-
-            //if (MyList_Class.PhotoURI != "ghostbusters-logo.jpg") return info.getBabyPhoto(MyList_Class.PhotoURI);
-
+	
             try
             {
                 return info.getBabyPhoto(MyList_Class.PhotoURI);

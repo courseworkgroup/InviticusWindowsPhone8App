@@ -99,7 +99,8 @@ namespace Inviticus
                         break;
                 }
                 _babyViewModel.AddNewImmunisationData();
-            }            
+            }  
+			_babyViewModel.updateImmunisationTaken();
         }
     }
 

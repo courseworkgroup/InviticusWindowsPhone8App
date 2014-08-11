@@ -67,6 +67,21 @@ namespace Inviticus
             }
             
         }
+		
+		
+		 public void deleteBabyPhoto(string fileName)
+        {
+
+            using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
+            {
+                if (myIsolatedStorage.FileExists(fileName))
+                {
+                    myIsolatedStorage.DeleteFile(fileName);
+                }
+
+            }
+
+        }
 
         public BitmapImage getBabyPhoto(string fileName)
         {

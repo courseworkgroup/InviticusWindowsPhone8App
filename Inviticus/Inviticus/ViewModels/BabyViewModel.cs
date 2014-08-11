@@ -84,9 +84,7 @@ namespace Inviticus.ViewModels
 
         private void LoadWeights()
         {
-            List<Weight> weightList = context.Weights
-                .Where(n => n.BabyId == this.Baby.Id)
-                .ToList();
+            List<Weight> weightList = context.Weights.Where(n => n.BabyId == this.Baby.Id).ToList();
             this.Weight = new ObservableCollection<Weight>(weightList);
 
             BirthWeight = context.Weights.Where(n => n.Date == n.Baby.BirthDate).FirstOrDefault();
@@ -100,6 +98,7 @@ namespace Inviticus.ViewModels
 
         }
         
+		
         public void Save()
         {
             if (Baby.Id <= 0)

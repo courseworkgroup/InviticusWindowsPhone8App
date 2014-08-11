@@ -10,6 +10,8 @@ using Microsoft.Phone.Shell;
 using Inviticus.ViewModels;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
+using Microsoft.Phone.Tasks;
+using System.IO;
 
 namespace Inviticus
 {
@@ -18,11 +20,14 @@ namespace Inviticus
 
         private BabyViewModel _babyViewModel;
         SharedInformation info = SharedInformation.getInstance();
+        PhotoChooserTask photoChooserTask;
+        public string fileName { get; private set; }
         
         public Profile()
         {
             InitializeComponent();
-           
+            photoChooserTask = new PhotoChooserTask();
+            photoChooserTask.Completed += new EventHandler<PhotoResult>(photoChooserTask_Completed);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -45,6 +50,9 @@ namespace Inviticus
                 babyPhoto.Source = new BitmapImage(new Uri(@"Assets/PanoramaBackground.png", UriKind.Relative));
             }
 
+            if (_babyViewModel.Baby.IsImmunisationDataComplete) test.Text = "true";
+            else test.Text = "false";
+
             birthWeight.Text = _babyViewModel.BirthWeight.BabyWeight; 
                      
 
@@ -53,6 +61,31 @@ namespace Inviticus
         void settings_Click(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/Settings.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        public void photoChooserTask_Completed(object sender, PhotoResult e)
+        {
+            if (e.TaskResult == TaskResult.OK)
+            {
+                info.deleteBabyPhoto(_babyViewModel.Baby.PhotoURI);
+
+                string filePath = e.OriginalFileName;
+                fileName = Path.GetFileName(filePath);
+
+                MessageBox.Show(e.ChosenPhoto.Length.ToString());
+                info.saveBabyPhoto(e.ChosenPhoto, fileName);
+                _babyViewModel.updatePhotoURI(fileName);
+
+                this.babyPhoto.Source = info.getBabyPhoto(fileName);
+
+               
+            }
+
+        }
+
+        private void ChangePicture(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            photoChooserTask.Show();
         }
                 
     }

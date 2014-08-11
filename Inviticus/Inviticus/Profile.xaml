@@ -30,7 +30,7 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <ScrollViewer>
                 <StackPanel>
-                    <Image Name="babyPhoto" Height="200" Width="200" HorizontalAlignment="Left" Margin="12"/>
+                    <Image Name="babyPhoto" Height="200" Width="200" HorizontalAlignment="Left" Margin="12" DoubleTap="ChangePicture"/>
                     <StackPanel>
                         <TextBlock Text="Name" TextWrapping="Wrap" Margin="10,10,0,0"/>
                         <TextBlock Name="babyName" Text="{Binding Baby.Name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextAccentStyle}" FontSize="32" />
@@ -55,6 +55,7 @@
                         <TextBlock Text="Mother" TextWrapping="Wrap" Margin="10,10,0,0"/>
                         <TextBlock Name="motherName" Text="{Binding Baby.MotherName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextAccentStyle}" FontSize="32"/>
                     </StackPanel>
+                    <TextBlock Name="test" Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextAccentStyle}" FontSize="32"/>
                 </StackPanel>
             </ScrollViewer>
         </Grid>

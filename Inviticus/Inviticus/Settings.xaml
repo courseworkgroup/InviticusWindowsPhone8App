@@ -44,9 +44,8 @@
                                         <DataTemplate>
                                             <StackPanel Margin="0,0,0,17">
                                                 <StackPanel Orientation="Horizontal">
-                                                        <Image Source="{Binding Converter={StaticResource List_ClassConverter}}" Width="100" Height="100"/>
-                                                        
-                                                        <TextBlock Text="{Binding Name,StringFormat='Name: {0}'}" 
+                                                        <Image Source="{Binding Converter={StaticResource List_ClassConverter}}" Width="70" Height="70"/>                                                        
+                                                        <TextBlock Text="{Binding Name}" 
                                                         TextWrapping="Wrap"
                                                         MaxWidth="300"
                                                         Style="{StaticResource PhoneTextLargeStyle}"/>

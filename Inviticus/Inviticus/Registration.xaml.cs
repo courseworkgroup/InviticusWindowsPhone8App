@@ -21,6 +21,8 @@ namespace Inviticus
         SharedInformation info = SharedInformation.getInstance();
         ComputeImmunization comp = ComputeImmunization.getInstance();
         PhotoChooserTask photoChooserTask;
+		private BabyViewModel _babyViewModel;
+
         public string fileName { get; private set; }
 
         public Registration()
@@ -75,7 +77,6 @@ namespace Inviticus
             }
             
         }
-        private BabyViewModel _babyViewModel;
        
 
         
