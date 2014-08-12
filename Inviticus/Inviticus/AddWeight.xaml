@@ -35,29 +35,8 @@
                         <TextBlock Text="Date of measurement" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
                         <toolkit:DatePicker x:Name="datePicker"/>
                     </StackPanel>
-                    <TextBox Name="dateOfMeasurement" Text="{Binding NewWeight.Date, Mode=TwoWay}" Visibility="Collapsed"/>
                     <TextBlock Text="Weight in kgs" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
                     <TextBox Name="weightMeasured" Text="{Binding NewWeight.BabyWeight, Mode=TwoWay}"/>
-                    <StackPanel Margin="0,12,0,0">
-                        <TextBlock Text="Weight Comment" Style="{StaticResource PhoneTextLargeStyle}"/>
-                        <StackPanel Orientation="Horizontal" Margin="3,0,-3,0">
-                            <RadioButton GroupName="weightComment" Checked="obeseChecked" Name="obeseradiobutton"  BorderThickness="3" Background="Transparent" VerticalAlignment="Center"/>
-                            <TextBlock Text="Obese" Style="{StaticResource PhoneTextLargeStyle}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="3,0,-3,0">
-                            <RadioButton GroupName="weightComment" Checked="goodChecked" Name="goodradiobutton"  BorderThickness="3" Background="Transparent" VerticalAlignment="Center"/>
-                            <TextBlock Text="Good" Style="{StaticResource PhoneTextLargeStyle}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="3,0,-3,0">
-                            <RadioButton GroupName="weightComment" Checked="averageChecked" Name="averageradiobutton"  BorderThickness="3" Background="Transparent" VerticalAlignment="Center"/>
-                            <TextBlock Text="Average" Style="{StaticResource PhoneTextLargeStyle}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="3,0,-3,0">
-                            <RadioButton GroupName="weightComment" Checked="badChecked" Name="badradiobutton"  BorderThickness="3" Background="Transparent" VerticalAlignment="Center"/>
-                            <TextBlock Text="Bad" Style="{StaticResource PhoneTextLargeStyle}"/>
-                        </StackPanel>
-                        <TextBox Name="weightComment" Text="{Binding NewWeight.WeightComment, Mode=TwoWay}" Visibility="Collapsed" />
-                    </StackPanel>
                 </StackPanel>
             </StackPanel>
         </Grid>

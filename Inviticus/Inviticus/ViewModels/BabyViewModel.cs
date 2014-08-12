@@ -92,7 +92,8 @@ namespace Inviticus.ViewModels
             List<Weight> weightList = context.Weights.Where(n => n.BabyId == this.Baby.Id).ToList();
             this.Weight = new ObservableCollection<Weight>(weightList);
 
-            BirthWeight = context.Weights.Where(n => n.Date == n.Baby.BirthDate).FirstOrDefault();
+            var query = from i in context.Weights where i.BabyId == this.Baby.Id && i.Date == i.Baby.BirthDate select i;
+            BirthWeight = query.First();
 
         }
 
@@ -128,7 +129,6 @@ namespace Inviticus.ViewModels
             NewWeight.Baby = this.Baby;
             NewWeight.BabyWeight = "";
             NewWeight.Date = "";
-            NewWeight.WeightComment = "";
         }
 
         public void InitializeNewImmunisationData()
@@ -161,17 +161,6 @@ namespace Inviticus.ViewModels
            this.Vaccine = context.ImmunisationDatas.Where(n => n.ImmunisationDataId == value).FirstOrDefault();
         }
 
-        public void updateImmunisationTaken()
-        {
-            try
-            {
-                this.Baby.IsImmunisationDataComplete = true;
-                context.SubmitChanges();
-            }
-            catch { }
-
-        }
-
         public void updatePhotoURI(string newPhoto)
         {
             this.Baby.PhotoURI = newPhoto;
@@ -180,11 +169,7 @@ namespace Inviticus.ViewModels
 
         public void updateImmunisationData(string date, bool value, int location)
         {
-            //NewImmunisationData = new ImmunisationData();
-            //NewImmunisationData = context.ImmunisationDatas.Where(b => b.ImmunisationDataId == location).FirstOrDefault();
-            //NewImmunisationData.DateTaken = date;
-            //NewImmunisationData.ImmunizationTaken = value;
-
+           
             var query = from i in context.ImmunisationDatas where i.ImmunisationDataId == location select i;
             NewImmunisationData = query.First();
             NewImmunisationData.DateTaken = date;

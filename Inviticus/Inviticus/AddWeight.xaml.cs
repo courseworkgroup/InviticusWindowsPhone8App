@@ -41,30 +41,12 @@ namespace Inviticus
         private void save_weight(object sender, EventArgs e)
         {
             DateTime bd = (DateTime)datePicker.Value;
-            dateOfMeasurement.Text = bd.ToString("d");
+            _babyViewModel.NewWeight.Date = bd.ToString("d");
+
+            _babyViewModel.NewWeight.BabyWeight = weightMeasured.Text;
 
             _babyViewModel.AddNewWeight();
             NavigationService.Navigate(new Uri("/WeightPage.xaml", UriKind.RelativeOrAbsolute));
-        }
-
-        private void obeseChecked(object sender, RoutedEventArgs e)
-        {
-            weightComment.Text = "Obese";
-        }
-
-        private void goodChecked(object sender, RoutedEventArgs e)
-        {
-            weightComment.Text = "Good";
-        }
-
-        private void averageChecked(object sender, RoutedEventArgs e)
-        {
-            weightComment.Text = "Average";
-        }
-
-        private void badChecked(object sender, RoutedEventArgs e)
-        {
-            weightComment.Text = "Bad";
         }
     }
 

@@ -20,6 +20,8 @@ namespace Inviticus
     {
         SharedInformation info = SharedInformation.getInstance();
         ComputeImmunization comp = ComputeImmunization.getInstance();
+        Notifications notify = Notifications.getInstance();
+
         PhotoChooserTask photoChooserTask;
 		private BabyViewModel _babyViewModel;
 
@@ -77,9 +79,7 @@ namespace Inviticus
             }
             
         }
-       
-
-        
+               
 
         private void ApplicationBarSaveButton_Click(object sender, EventArgs e)
         {
@@ -87,28 +87,25 @@ namespace Inviticus
                 babyPhoto.Text = fileName;
 
             DateTime bd = (DateTime)datePicker.Value;
-            birthDate.Text = bd.ToString("d");
-            weightDate.Text = bd.ToString("d");
+            _babyViewModel.Baby.BirthDate = bd.ToString("d");
+            _babyViewModel.NewWeight.Date = bd.ToString("d");
 
+            _babyViewModel.Baby.MotherName = motherName.Text;
             _babyViewModel.AddNewWeight();
             _babyViewModel.Save();
 
-            if (info.babyID != 0) NavigationService.Navigate(new Uri("/Settings.xaml?", UriKind.RelativeOrAbsolute));
-            else
-            {
-                info.babyID = 1;
-                info.saveToIsolatedStorage();
+            NavigationService.Navigate(new Uri("/MainPage.xaml?babyid=", UriKind.RelativeOrAbsolute));
 
-                //Compute immunisation dates
-                DateTime date = new DateTime();
-                _babyViewModel = new BabyViewModel(info.babyID);
-                date = Convert.ToDateTime(_babyViewModel.Baby.BirthDate);
-                comp.computeImmunizationData(date);
-               
-                NavigationService.Navigate(new Uri("/MainPage.xaml?babyid=", UriKind.RelativeOrAbsolute));
-            }
+            info.babyID = _babyViewModel.Baby.Id;
+            info.saveToIsolatedStorage();
+
+             //Compute immunisation dates
+             DateTime date = new DateTime();
+             date = Convert.ToDateTime(_babyViewModel.Baby.BirthDate);
+             comp.computeImmunizationData(date);  
             
-
+            //Notifications
+             notify.SetNotification();
         }
 
         private void ApplicationBarCancelCourseButton_Click_1(object sender, EventArgs e)
@@ -125,32 +122,5 @@ namespace Inviticus
         {
             gender.Text = "Female";
         }
-
-        //private void weight_Date(object sender, EventArgs e)
-        //{
-        //    weightDate.Text = birthDate.Text;
-        //}
-
-        private void obeseChecked(object sender, RoutedEventArgs e)
-        {
-            weightComment.Text = "Obese";
-        }
-
-        private void goodChecked(object sender, RoutedEventArgs e)
-        {
-            weightComment.Text = "Good";
-        }
-
-        private void averageChecked(object sender, RoutedEventArgs e)
-        {
-            weightComment.Text = "Average";
-        }
-
-        private void badChecked(object sender, RoutedEventArgs e)
-        {
-            weightComment.Text = "Bad";
-        }
-
-
     }
 }

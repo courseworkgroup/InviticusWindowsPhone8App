@@ -33,7 +33,7 @@ namespace Inviticus.Model
         }
 
         private string _date;
-        [Column(DbType = "nvarchar(255)", CanBeNull = false)]
+        [Column(DbType = "nvarchar(255)", CanBeNull = false, UpdateCheck = UpdateCheck.Never)]
         public string Date
         {
             get
@@ -53,7 +53,7 @@ namespace Inviticus.Model
         }
 
         private string _babyWeight;
-        [Column(DbType = "nvarchar(255)", CanBeNull = false)]
+        [Column(DbType = "nvarchar(255)", CanBeNull = false, UpdateCheck = UpdateCheck.Never)]
         public string BabyWeight
         {
             get
@@ -72,27 +72,8 @@ namespace Inviticus.Model
             }
         }
 
-        private string _weightComment;
-        public string WeightComment
-        {
-            get
-            {
-                return _weightComment;
-            }
-            set
-            {
-                if(_weightComment != value)
-                {
-                    NotifyPropertyChanging("WeightComment");
-                    _weightComment = value;
-                    NotifyPropertyChanged("WeightComment");
-                }
-            }
-        }
-
         private EntityRef<Baby> _baby;
-        [Association(Name = "FK_Baby_Weight", Storage = "_baby", ThisKey = "BabyId",
-        OtherKey = "Id", IsForeignKey = true)]
+        [Association(Name = "FK_Baby_Weight", Storage = "_baby", ThisKey = "BabyId", OtherKey = "Id", IsForeignKey = true)]
         public Baby Baby
         {
             get
@@ -113,7 +94,7 @@ namespace Inviticus.Model
             }
         }
 
-        public int _babyid;
+        private int _babyid;
         [Column(CanBeNull = false)]
         public int BabyId
         {

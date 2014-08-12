@@ -50,9 +50,6 @@ namespace Inviticus
                 babyPhoto.Source = new BitmapImage(new Uri(@"Assets/PanoramaBackground.png", UriKind.Relative));
             }
 
-            if (_babyViewModel.Baby.IsImmunisationDataComplete) test.Text = "true";
-            else test.Text = "false";
-
             birthWeight.Text = _babyViewModel.BirthWeight.BabyWeight; 
                      
 

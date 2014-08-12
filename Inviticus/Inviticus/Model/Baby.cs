@@ -63,7 +63,7 @@ namespace Inviticus.Model
 
         private string _name;
 
-        [Column(DbType = "nvarchar(255)", CanBeNull = false)]
+        [Column(DbType = "nvarchar(255)", CanBeNull = false, UpdateCheck = UpdateCheck.Never)]
         public string Name
         {
             get
@@ -83,7 +83,7 @@ namespace Inviticus.Model
 
         private string _birthDate;
 
-        [Column(DbType = "nvarchar(255)", CanBeNull = false)]
+        [Column(DbType = "nvarchar(255)", CanBeNull = false, UpdateCheck = UpdateCheck.Never)]
         public string BirthDate
         {
             get
@@ -103,7 +103,7 @@ namespace Inviticus.Model
 
         private string _gender;
 
-        [Column(DbType = "nvarchar(255)", CanBeNull = false)]
+        [Column(DbType = "nvarchar(255)", CanBeNull = false, UpdateCheck = UpdateCheck.Never)]
         public string Gender
         {
             
@@ -124,7 +124,7 @@ namespace Inviticus.Model
 
         private string _fatherName;
 
-        [Column(DbType = "nvarchar(255)", CanBeNull = false)]
+        [Column(DbType = "nvarchar(255)", CanBeNull = false, UpdateCheck = UpdateCheck.Never)]
         public string FatherName
         {
             get
@@ -143,7 +143,7 @@ namespace Inviticus.Model
         }
 
         private string _motherName;
-        [Column(DbType = "nvarchar(255)", CanBeNull = false)]
+        [Column(DbType = "nvarchar(255)", CanBeNull = false, UpdateCheck = UpdateCheck.Never)]
 
         public string MotherName 
         { 
@@ -164,7 +164,7 @@ namespace Inviticus.Model
 
         private string _photoURI;
 
-        [Column(DbType = "nvarchar(255)", CanBeNull = false)]
+        [Column(DbType = "nvarchar(255)", CanBeNull = false, UpdateCheck = UpdateCheck.Never)]
         public string PhotoURI
         {
             get
@@ -178,23 +178,6 @@ namespace Inviticus.Model
                     NotifyPropertyChanging("PhotoURI");
                     _photoURI = value;
                     NotifyPropertyChanged("PhotoURI");
-                }
-            }
-        }
-
-        private bool _isImmunisationDataComplete;
-
-        [Column]
-        public bool IsImmunisationDataComplete
-        {
-            get { return _isImmunisationDataComplete; }
-            set
-            {
-                if (_isImmunisationDataComplete != value)
-                {
-                    NotifyPropertyChanging("IsComplete");
-                    _isImmunisationDataComplete = value;
-                    NotifyPropertyChanged("IsComplete");
                 }
             }
         }

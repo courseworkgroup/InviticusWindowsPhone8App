@@ -42,9 +42,6 @@ namespace Inviticus
             ImageBrush imageBrush = new ImageBrush();
             imageBrush.ImageSource = info.bitmapImage;
             LayoutRoot.Background = imageBrush;
-
-            App.ViewModel.LoadData();
-            //llsBabies.ItemsSource = App.ViewModel.Babies;
             
         }
 
@@ -72,25 +69,13 @@ namespace Inviticus
 
             info.babyID = (llsBabies.SelectedItem as Baby).Id;
             info.saveToIsolatedStorage();
-
-            //Compute immunisation dates
-            BabyViewModel _babyViewModel = new BabyViewModel(info.babyID);
-
-            if (!_babyViewModel.Baby.IsImmunisationDataComplete)
-            {
-                DateTime date = new DateTime();
-                date = Convert.ToDateTime(_babyViewModel.Baby.BirthDate);
-                comp.computeImmunizationData(date);
-            }
-
 			
-            NavigationService.Navigate(new Uri("/MainPage.xaml?babyid=" + (llsBabies.SelectedItem as Baby).Id, UriKind.RelativeOrAbsolute));
+            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.RelativeOrAbsolute));
             llsBabies.SelectedItem = null;
         }
 
         private void ApplicationBarAddButton_Click(object sender, EventArgs e)
-        {
-            
+        {           
             NavigationService.Navigate(new Uri("/Registration.xaml", UriKind.RelativeOrAbsolute));
         }
 

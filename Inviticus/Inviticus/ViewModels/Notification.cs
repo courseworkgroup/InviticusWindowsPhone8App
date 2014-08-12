@@ -9,22 +9,31 @@ using System.Windows;
 
 namespace Inviticus.ViewModels
 {
-    class Notifications
+    public class Notifications
     {
         SharedInformation info = SharedInformation.getInstance();
         private BabyViewModel _babyViewModel;
-        public bool removeFromSchedule { get; set; }
+        private bool removeFromSchedule { get; set; }
+
+        private static Notifications instance = new Notifications();
+
+        private Notifications() { }
+
+        public static Notifications getInstance()
+        {
+            return instance;
+        }
+        
 
         public void SetNotification()
         {
             _babyViewModel = new BabyViewModel(info.babyID);
-            //DateTime dTime = new DateTime();
 
             foreach(ImmunisationData vaccine in _babyViewModel.ImmunisationData)
             {
                 TimeSpan duration = new TimeSpan();
                 duration =  Convert.ToDateTime(vaccine.Date).Subtract(DateTime.Now);
-                int x = Convert.ToInt32(duration);
+                int x = duration.Days;
 
                 
                 if(DateTime.Now < Convert.ToDateTime(vaccine.Date))
