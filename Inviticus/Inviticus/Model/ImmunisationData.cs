@@ -32,7 +32,7 @@ namespace Inviticus.Model
             }
 
             private string _immunisation;
-            [Column(DbType = "nvarchar(255)", CanBeNull = false)]
+            [Column(DbType = "nvarchar(255)", CanBeNull = false, UpdateCheck = UpdateCheck.Never)]
             public string Immunisation
             {
                 get
@@ -52,7 +52,7 @@ namespace Inviticus.Model
             }
 
             private string _immunisationDetails;
-            [Column(DbType = "nvarchar(255)", CanBeNull = false)]
+            [Column(DbType = "nvarchar(255)", CanBeNull = false, UpdateCheck = UpdateCheck.Never)]
             public string ImmunisationDetails
             {
                 get
@@ -72,7 +72,7 @@ namespace Inviticus.Model
             }
 
             private string _immunisationPeriod;
-            [Column(DbType = "nvarchar(255)", CanBeNull = false)]
+            [Column(DbType = "nvarchar(255)", CanBeNull = false, UpdateCheck = UpdateCheck.Never)]
             public string ImmunisationPeriod
             {
                 get
@@ -92,7 +92,7 @@ namespace Inviticus.Model
             }
 
             private string _date;
-            [Column(DbType = "nvarchar(255)", CanBeNull = false)]
+            [Column(DbType = "nvarchar(255)", CanBeNull = false, UpdateCheck = UpdateCheck.Never)]
             public string Date
             {
                 get
@@ -112,7 +112,7 @@ namespace Inviticus.Model
             }
 
             private string _dateTaken;
-            [Column(DbType = "nvarchar(255)", CanBeNull = false)]
+            [Column(DbType = "nvarchar(255)", CanBeNull = false, UpdateCheck = UpdateCheck.Never)]
             public string DateTaken
             {
                 get
@@ -133,7 +133,7 @@ namespace Inviticus.Model
 
 
             private bool _immunizationTaken;
-            [Column(DbType = "nvarchar(255)", CanBeNull = false)]
+            [Column(DbType = "nvarchar(255)", CanBeNull = false, UpdateCheck = UpdateCheck.Never)]
             public bool ImmunizationTaken
             {
                 get

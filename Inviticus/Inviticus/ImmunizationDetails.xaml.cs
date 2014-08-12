@@ -45,6 +45,49 @@ namespace Inviticus
 
                 }
             }
+
+            if (_babyViewModel.Vaccine.ImmunizationTaken)
+            {
+                administered.Visibility = Visibility.Collapsed;
+                administeredTB.Visibility = Visibility.Collapsed;
+                txt.Visibility = Visibility.Visible;
+                dateCompleted.Visibility = Visibility.Visible;
+
+                dateCompleted.Text = _babyViewModel.Vaccine.DateTaken;
+            }
+        }
+
+        private void showDatePicker(object sender, RoutedEventArgs e)
+        {
+            if ((bool)administered.IsChecked)
+            {
+                txt.Visibility = Visibility.Visible;
+                datePicker.Visibility = Visibility.Visible;
+                ApplicationBar.IsVisible = true;
+            }
+
+            else
+            {
+                txt.Visibility = Visibility.Collapsed;
+                datePicker.Visibility = Visibility.Collapsed;
+                ApplicationBar.IsVisible = false;
+            }
+                
+        }
+
+        private void ApplicationBarSaveButton_Click(object sender, EventArgs e)
+        {
+            string selectedIndex = "";
+            if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex))
+            {
+                int index = int.Parse(selectedIndex);
+                DateTime dateTime = (DateTime)datePicker.Value;
+                _babyViewModel.updateImmunisationData(dateTime.ToString("d"), true, index);
+            }
+
+            NavigationService.Navigate(new Uri("/Immunization.xaml", UriKind.RelativeOrAbsolute));
+
+
         }
     }
 }

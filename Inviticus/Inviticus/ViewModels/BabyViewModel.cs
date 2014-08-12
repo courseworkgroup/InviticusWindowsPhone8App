@@ -18,6 +18,10 @@ namespace Inviticus.ViewModels
 
         public ObservableCollection<ImmunisationData> ImmunisationData { get; private set; }
 
+        public ObservableCollection<ImmunisationData> ImmunisationComplete { get; private set; }
+
+        public ObservableCollection<ImmunisationData> ImmunisationIncomplete { get; private set; }
+
         public Weight BirthWeight { get;  private set; }
 
         public ImmunisationData Vaccine { get; private set; }
@@ -51,6 +55,7 @@ namespace Inviticus.ViewModels
                 NotifyPropertyChanged("NewImmunisationData");
             }
         }
+
 
         private Baby _baby;
 
@@ -93,8 +98,16 @@ namespace Inviticus.ViewModels
 
         private void LoadImmunisationData()
         {
+            ImmunisationComplete = new ObservableCollection<ImmunisationData>();
+            ImmunisationIncomplete = new ObservableCollection<ImmunisationData>();
             List<ImmunisationData> immunisationDataList = context.ImmunisationDatas.Where(n => n.BabyId == this.Baby.Id).ToList();
             this.ImmunisationData = new ObservableCollection<ImmunisationData>(immunisationDataList);
+
+            foreach (ImmunisationData vaccine in this.ImmunisationData)
+            {
+                if (vaccine.ImmunizationTaken) ImmunisationComplete.Add(vaccine);
+                else ImmunisationIncomplete.Add(vaccine);
+            }
 
         }
         
@@ -163,8 +176,13 @@ namespace Inviticus.ViewModels
 
         public void updateImmunisationData(string date, bool value, int location)
         {
-            NewImmunisationData = new ImmunisationData();
-            NewImmunisationData = context.ImmunisationDatas.Where(b => b.ImmunisationDataId == location).FirstOrDefault();
+            //NewImmunisationData = new ImmunisationData();
+            //NewImmunisationData = context.ImmunisationDatas.Where(b => b.ImmunisationDataId == location).FirstOrDefault();
+            //NewImmunisationData.DateTaken = date;
+            //NewImmunisationData.ImmunizationTaken = value;
+
+            var query = from i in context.ImmunisationDatas where i.ImmunisationDataId == location select i;
+            NewImmunisationData = query.First();
             NewImmunisationData.DateTaken = date;
             NewImmunisationData.ImmunizationTaken = value;
 

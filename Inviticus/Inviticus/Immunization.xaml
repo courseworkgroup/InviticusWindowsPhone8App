@@ -24,22 +24,42 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="Immunization" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <phone:LongListSelector x:Name="llsImmunizationList" ItemsSource="{Binding ImmunisationData}" SelectionChanged="llsImmunizationList_SelectionChanged">
-                <phone:LongListSelector.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Margin="12">
-                            <TextBlock Text="{Binding Immunisation}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                            <TextBlock Text="{Binding ImmunisationPeriod}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                            <TextBlock Text="{Binding ImmunisationDataId}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </phone:LongListSelector.ItemTemplate>
-            </phone:LongListSelector>
+            <!--Pivot Control-->
+            <phone:Pivot Title="Immunization" FontSize="36">
+                <!--Pivot item one-->
+                <phone:PivotItem Header="Incomplete">
+                    <phone:LongListSelector x:Name="llsImmunizationList" ItemsSource="{Binding ImmunisationIncomplete}" SelectionChanged="llsImmunizationList_SelectionChanged">
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="12">
+                                    <TextBlock Text="{Binding Immunisation}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                    <TextBlock Text="{Binding ImmunisationPeriod}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                    <TextBlock Text="{Binding ImmunisationDataId}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                    </phone:LongListSelector>
+                </phone:PivotItem>
+
+                <!--Pivot item two-->
+                <phone:PivotItem Header="Completed">
+                    <phone:LongListSelector x:Name="llsImmunizationCompleteList" ItemsSource="{Binding ImmunisationComplete}" SelectionChanged="llsImmunizationCompleteList_SelectionChanged">
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="12">
+                                    <TextBlock Text="{Binding Immunisation}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                    <TextBlock Text="{Binding ImmunisationPeriod}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                    <TextBlock Text="{Binding ImmunisationDataId}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                    </phone:LongListSelector>
+                </phone:PivotItem>
+            </phone:Pivot>
         </Grid>
     </Grid>
 

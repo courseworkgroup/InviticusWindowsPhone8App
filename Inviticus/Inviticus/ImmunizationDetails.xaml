@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -34,15 +35,29 @@
                 <StackPanel Margin="12,12,0,0">
                     <TextBlock Name="PeriodTB" Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}"/>
                     <TextBlock Name="DetailsTB" Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}"/>
-                    <StackPanel Orientation="Horizontal">
-                        <CheckBox Name="administered" VerticalAlignment="Center"/>
-                        <TextBlock Text="Administered" VerticalAlignment="Center" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
-                    </StackPanel>
-                    <TextBlock Text="Date Administered" Style="{StaticResource PhoneTextLargeStyle}" Margin="12"/>
-                    <TextBox Name="dateadministered"/>
+                </StackPanel >
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox Name="administered" VerticalAlignment="Center" Checked="showDatePicker" Unchecked="showDatePicker"/>
+                    <TextBlock Name="administeredTB" Text="Administered" VerticalAlignment="Center" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>             
+                </StackPanel >
+                <StackPanel>
+                    <TextBlock Name="txt" Text="Date Administered" Style="{StaticResource PhoneTextLargeStyle}" Visibility="Collapsed"/>
+                    <toolkit:DatePicker x:Name="datePicker" Visibility="Collapsed"/>
+                </StackPanel>
+                <StackPanel>
+                    <!--<TextBlock Name="dateAdministered" Text="Date Administered" Style="{StaticResource PhoneTextLargeStyle}" Margin="12" Visibility="Collapsed"/>-->
+                    <TextBlock Name="dateCompleted" Text="" Style="{StaticResource PhoneTextNormalStyle}" Margin="17,0,0,0" Visibility="Collapsed"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
     </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsMenuEnabled="False" IsVisible="False">
+            <shell:ApplicationBarIconButton IconUri="/Assets/Icons/save.png" 
+                                            Text="save" 
+                                            Click="ApplicationBarSaveButton_Click" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>

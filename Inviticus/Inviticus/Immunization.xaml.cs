@@ -37,7 +37,8 @@ namespace Inviticus
 
             DataContext = _babyViewModel;
 
-            llsImmunizationList.ItemsSource = _babyViewModel.ImmunisationData;
+            llsImmunizationList.ItemsSource = _babyViewModel.ImmunisationIncomplete;
+            llsImmunizationCompleteList.ItemsSource = _babyViewModel.ImmunisationComplete;
         }
 
         private void llsImmunizationList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -52,6 +53,20 @@ namespace Inviticus
 
             //reset the selection 
            llsImmunizationList.SelectedItem = null;
+        }
+
+        private void llsImmunizationCompleteList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //check if one of the list items has been selected, if not do nothing
+            if (llsImmunizationCompleteList.SelectedItem == null)
+                return;
+
+            //navigate to the new page required, with an input of the selected input
+            //NavigationService.Navigate(new Uri("/ImmunizationDetails.xaml?selectedItem="+ (ImmunizationList.SelectedItem as ItemViewModel).ID, UriKind.RelativeOrAbsolute));
+            NavigationService.Navigate(new Uri("/ImmunizationDetails.xaml?selectedItem=" + (llsImmunizationCompleteList.SelectedItem as ImmunisationData).ImmunisationDataId, UriKind.RelativeOrAbsolute));
+
+            //reset the selection 
+            llsImmunizationCompleteList.SelectedItem = null;
         }
     }
 }
