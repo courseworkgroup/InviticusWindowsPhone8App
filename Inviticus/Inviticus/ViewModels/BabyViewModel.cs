@@ -163,8 +163,12 @@ namespace Inviticus.ViewModels
 
         public void updateImmunisationTaken()
         {
-            this.Baby.IsImmunisationDataComplete = true;
-            context.SubmitChanges();
+            try
+            {
+                this.Baby.IsImmunisationDataComplete = true;
+                context.SubmitChanges();
+            }
+            catch { }
 
         }
 

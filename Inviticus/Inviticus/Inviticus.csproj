@@ -134,6 +134,7 @@
     <Compile Include="ViewModels\BabyViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\Notification.cs" />
     <Compile Include="WeightPage.xaml.cs">
       <DependentUpon>WeightPage.xaml</DependentUpon>
     </Compile>

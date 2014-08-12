@@ -91,7 +91,7 @@ namespace Inviticus
                     case "Measles":
                         _babyViewModel.NewImmunisationData.Immunisation = vaccine;
                         _babyViewModel.NewImmunisationData.ImmunisationDetails = "The Measles vaccine is given against the Measles disease, it is the last vaccine received and is administered on the left upper arm";
-                        _babyViewModel.NewImmunisationData.Date = date.AddMonths(9).ToString("d");
+                        _babyViewModel.NewImmunisationData.Date = date.AddDays(273).ToString("d");
                         _babyViewModel.NewImmunisationData.ImmunisationPeriod = "Given At 9 months";
 
                         break;
