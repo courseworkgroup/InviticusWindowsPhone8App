@@ -46,48 +46,13 @@ namespace Inviticus
             imageBrush.ImageSource = info.bitmapImage;
             LayoutRoot.Background = imageBrush;
 
-            if (info.babyID == 0)
-            {
-                NavigationService.Navigate(new Uri("/Registration.xaml", UriKind.RelativeOrAbsolute));
-            }
 
             if (!App.ViewModel.IsDataLoaded)
             {
                 App.ViewModel.LoadData();
             }
-            //change.Text = ToString('{0}', babyid);
-
-            
-            
-
-            ////obj.SetSource(Application.GetResourceStream(new Uri(@"Assets/Photo0277_edited.jpg", UriKind.Relative)).Stream);
-
 
         }
-
-        //public void BuildLocalizedApplicationBar()
-        //{
-        //    ApplicationBar = new ApplicationBar();
-        //    ApplicationBar.Mode= ApplicationBarMode.Minimized;
-        //   // ApplicationBarIconButton add = new ApplicationBarIconButton();
-        //   // add.IconUri = new Uri("/Assets/Icons/add.png", UriKind.RelativeOrAbsolute);
-        //   // ApplicationBar.Buttons.Add(add);
-
-        //   // add.Click += add_Click;
-
-        //    ApplicationBarMenuItem settings = new ApplicationBarMenuItem();
-        //    settings.Text = AppResources.AppBarSettings;
-        //    ApplicationBar.MenuItems.Add(settings);
-
-        //    settings.Click += settings_Click;
-
-        //}
-
-       // void add_Click(object sender, EventArgs e)
-       // {
-       //     NavigationService.Navigate(new Uri("/Registration.xaml", UriKind.RelativeOrAbsolute));
-       // }
-
 
         void settings_Click(object sender, EventArgs e)
         {
@@ -109,11 +74,5 @@ namespace Inviticus
             NavigationService.Navigate(new Uri("/Profile.xaml", UriKind.RelativeOrAbsolute));
         }
 
-        public void background(BitmapImage bitmapImage)
-        {
-            ImageBrush imageBrush = new ImageBrush();
-            imageBrush.ImageSource = bitmapImage;
-            this.panorama.Background = imageBrush;
-        }
     }
 }

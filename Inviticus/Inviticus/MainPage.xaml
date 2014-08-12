@@ -16,53 +16,21 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-
-        <!-- LOCALIZATION NOTE:
-            To localize the displayed strings copy their values to appropriately named
-            keys in the app's neutral language resource file (AppResources.resx) then
-            replace the hard-coded text value between the attributes' quotation marks
-            with the binding clause whose path points to that string name.
-
-            For example:
-
-                Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}"
-
-            This binding points to the template's string resource named "ApplicationTitle".
-
-            Adding supported languages in the Project Properties tab will create a
-            new resx file per language that can carry the translated values of your
-            UI strings. The binding in these examples will cause the value of the
-            attributes to be drawn from the .resx file that matches the
-            CurrentUICulture of the app at run time.
-         -->
-
          <!--Panorama control-->
         <phone:Panorama Title="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Name="panorama">
-            <!--<phone:Panorama.Background>
-                <ImageBrush xmlns:local="clr-namespace:Inviticus"  ImageSource="/Assets/Photo0277_edited.jpg" Stretch="Fill"/>
-            </phone:Panorama.Background>-->
-
+    
             <!--Panorama item one-->
             <phone:PanoramaItem Header="categories">
-                <!--Single line list with text wrapping-->
-              <!--  <phone:LongListSelector Margin="0,0,-22,0" ItemsSource="{Binding Items}">
-                    <phone:LongListSelector.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Margin="0,-6,0,12">
-                                <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" Tap="TextBlock_Tap" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </phone:LongListSelector.ItemTemplate>
-                </phone:LongListSelector>-->
+ 
                 <ScrollViewer Grid.Row="1">
                     <StackPanel Grid.Row="1">
-                        <TextBlock Text="profile" TextWrapping="Wrap" Style="{StaticResource PhoneTextContrastStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" Tap="Profile_Tap"/>
+                        <TextBlock Text="profile" TextWrapping="Wrap" Style="{StaticResource PhoneTextAccentStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" Tap="Profile_Tap"/>
                         <TextBlock Text="tap to view the baby's profile" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                        <TextBlock Text="weight" TextWrapping="Wrap" Style="{StaticResource PhoneTextContrastStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" Tap="Weight_Tap"/>
+                        <TextBlock Text="weight" TextWrapping="Wrap" Style="{StaticResource PhoneTextAccentStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" Tap="Weight_Tap"/>
                         <TextBlock Text="tap to add weight for the child" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                        <TextBlock Text="immunizations" TextWrapping="Wrap" Style="{StaticResource PhoneTextContrastStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" Tap="Immunization_Tap" />
+                        <TextBlock Text="immunizations" TextWrapping="Wrap" Style="{StaticResource PhoneTextAccentStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" Tap="Immunization_Tap" />
                         <TextBlock Text="tap to view the immunization status" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                        <TextBlock Text="development charts" TextWrapping="Wrap" Style="{StaticResource PhoneTextContrastStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" />
+                        <TextBlock Text="development charts" TextWrapping="Wrap" Style="{StaticResource PhoneTextAccentStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" />
                         <TextBlock Text="tap to view the weight and development charts" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
                     </StackPanel>
                 </ScrollViewer>
@@ -70,29 +38,11 @@
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="upcoming events" Orientation="Horizontal">
-                <!--Double line list with image placeholder and text wrapping using a floating header that scrolls with the content-->
-               <!-- <phone:LongListSelector Margin="0,-38,-22,2" ItemsSource="{Binding Items2}">
-                    <phone:LongListSelector.ListHeaderTemplate>
-                        <DataTemplate>
-                            <Grid Margin="12,0,0,38">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <TextBlock Text="upcoming "
-                                           Style="{StaticResource PanoramaItemHeaderTextStyle}"
-                                           Grid.Row="0"
-                                           />
-                            </Grid>
-                        </DataTemplate>
-                    </phone:LongListSelector.ListHeaderTemplate>-->
+                
                 <phone:LongListSelector Margin="0,-38,-22,2" ItemsSource="{Binding Items2}">    
                 <phone:LongListSelector.ItemTemplate >
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105" Width="432">
-                                <!--This section of the panorama app is to show up coming events, imagining that the user should also be able to add some events as well
-                                the top line shows the date and the bottom should show preview information/name of the event-->
-                               <!-- <Border BorderThickness="1" Width="99" Height="99" BorderBrush="#FFFFC700" Background="#FFFFC700"/>-->
                                 <StackPanel Width="311" Margin="8,-7,0,0">
                                     <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeLarge}" />
                                     <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="10,-2,10,0" Style="{StaticResource PhoneTextSubtleStyle}" />
@@ -105,8 +55,6 @@
 
             <!--Panorama item three-->
             <phone:PanoramaItem Header="what's new" Orientation="Horizontal">
-                <!-- Replace the rectangles with images relating to the site shown, this section deals with content from the internet that we intend to show in our application
-                on the right we have the site and a preview of the information that we want to show the user of the app-->
                 <Grid>
                     <phone:LongListSelector Margin="0,-38,-22,2" ItemsSource="{Binding Items3}">
                         <phone:LongListSelector.ItemTemplate>
@@ -125,15 +73,6 @@
                 </Grid>
             </phone:PanoramaItem>
         </phone:Panorama>
-        
-
-        <!--Uncomment to see an alignment grid to help ensure your controls are
-            aligned on common boundaries.  The image has a top margin of -32px to
-            account for the System Tray. Set this to 0 (or remove the margin altogether)
-            if the System Tray is hidden.
-
-            Before shipping remove this XAML and the image itself.-->
-        <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
 
     </Grid>
     <phone:PhoneApplicationPage.ApplicationBar >

@@ -14,7 +14,7 @@ namespace Inviticus
 {
     public partial class SplashPage : PhoneApplicationPage
     {
-       
+        SharedInformation info = SharedInformation.getInstance();
         public SplashPage()
         {
             InitializeComponent();
@@ -24,7 +24,8 @@ namespace Inviticus
          async void SplashPage_Loaded(object sender, RoutedEventArgs e)
         {
             await Task.Delay(TimeSpan.FromSeconds(2));
-              NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+            if (info.babyID == 0) NavigationService.Navigate(new Uri("/Registration.xaml", UriKind.RelativeOrAbsolute));
+            else NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
          
         }
        
