@@ -20,9 +20,7 @@
         <phone:Panorama Title="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Name="panorama">
     
             <!--Panorama item one-->
-            <phone:PanoramaItem Header="categories">
- 
-                <ScrollViewer Grid.Row="1">
+            <phone:PanoramaItem Header="categories">              
                     <StackPanel Grid.Row="1">
                         <TextBlock Text="profile" TextWrapping="Wrap" Style="{StaticResource PhoneTextAccentStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" Tap="Profile_Tap"/>
                         <TextBlock Text="tap to view the baby's profile" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
@@ -30,22 +28,21 @@
                         <TextBlock Text="tap to add weight for the child" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
                         <TextBlock Text="immunizations" TextWrapping="Wrap" Style="{StaticResource PhoneTextAccentStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" Tap="Immunization_Tap" />
                         <TextBlock Text="tap to view the immunization status" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                        <TextBlock Text="development charts" TextWrapping="Wrap" Style="{StaticResource PhoneTextAccentStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" />
+                        <TextBlock Text="development charts" TextWrapping="Wrap" Style="{StaticResource PhoneTextAccentStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" Tap="Chart_Tap"/>
                         <TextBlock Text="tap to view the weight and development charts" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
                     </StackPanel>
-                </ScrollViewer>
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="upcoming events" Orientation="Horizontal">
-                
-                <phone:LongListSelector Margin="0,-38,-22,2" ItemsSource="{Binding Items2}">    
+
+                <phone:LongListSelector x:Name="llsEvents" Margin="0,-38,-22,2" ItemsSource="{Binding ImmunisationIncomplete}" SelectionChanged="llsEvent_SelectionChanged">    
                 <phone:LongListSelector.ItemTemplate >
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105" Width="432">
                                 <StackPanel Width="311" Margin="8,-7,0,0">
-                                    <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeLarge}" />
-                                    <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="10,-2,10,0" Style="{StaticResource PhoneTextSubtleStyle}" />
+                                    <TextBlock Text="{Binding Immunisation}" TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextAccentStyle}" FontSize="{StaticResource PhoneFontSizeLarge}" />
+                                    <TextBlock Text="{Binding Date}" TextWrapping="Wrap" Margin="10,-2,10,0" Style="{StaticResource PhoneTextSubtleStyle}" />
                                 </StackPanel>
                             </StackPanel>
                         </DataTemplate>
@@ -63,7 +60,7 @@
                                     <Border Background="{StaticResource PhoneAccentBrush}" Height="99" Width="99" Margin="12,0,0,0"/>
                                     <StackPanel>
                                         <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeLarge}"/>
-                                        <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="10,-2,10,0" Style="{StaticResource PhoneTextNormalStyle}"/>
+                                        <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="10,-2,10,0" Style="{StaticResource PhoneTextNormalStyle}" Width="300"/>
                                     </StackPanel>
                                 </StackPanel>
                             </DataTemplate>

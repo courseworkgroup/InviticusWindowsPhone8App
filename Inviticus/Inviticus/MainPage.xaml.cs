@@ -14,13 +14,15 @@ using System.Windows.Documents;
 using System.Windows.Media.Animation;
 using System.Windows.Input;
 using System.Windows.Shapes;
+using Inviticus.ViewModels;
+using Inviticus.Model;
 
 namespace Inviticus
 {
     public partial class MainPage : PhoneApplicationPage
     {
         SharedInformation info = SharedInformation.getInstance();
-        
+        private BabyViewModel _babyViewModel;
         
         // Constructor
         public MainPage()
@@ -52,6 +54,12 @@ namespace Inviticus
                 App.ViewModel.LoadData();
             }
 
+            int babyid = -1;
+            babyid = info.babyID;
+            _babyViewModel = new BabyViewModel(babyid);
+
+            llsEvents.ItemsSource = _babyViewModel.ImmunisationIncomplete;
+
         }
 
         void settings_Click(object sender, EventArgs e)
@@ -72,6 +80,25 @@ namespace Inviticus
         private void Profile_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             NavigationService.Navigate(new Uri("/Profile.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void Chart_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Chart.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void llsEvent_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //check if one of the list items has been selected, if not do nothing
+            if (llsEvents.SelectedItem == null)
+                return;
+
+            //navigate to the new page required, with an input of the selected input
+            //NavigationService.Navigate(new Uri("/ImmunizationDetails.xaml?selectedItem="+ (ImmunizationList.SelectedItem as ItemViewModel).ID, UriKind.RelativeOrAbsolute));
+            NavigationService.Navigate(new Uri("/ImmunizationDetails.xaml?selectedItem=" + (llsEvents.SelectedItem as ImmunisationData).ImmunisationDataId, UriKind.RelativeOrAbsolute));
+
+            //reset the selection 
+            llsEvents.SelectedItem = null;
         }
 
     }

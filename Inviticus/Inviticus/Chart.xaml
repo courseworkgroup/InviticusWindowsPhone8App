@@ -1,0 +1,46 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Inviticus.Chart"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:charting="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Inviticus"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Landscape" Orientation="Landscape"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextLargeStyle}"/>
+        </StackPanel>
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <UserControl >
+                <UserControl.Resources>
+                    <local:ComputeWeightData x:Key="WeightInfo" />
+                </UserControl.Resources>
+                <charting:Chart  Height="374">
+                    <charting:Chart.Series>
+                        <charting:LineSeries IsSelectionEnabled="True"
+                         Title="Weight Report"
+                        ItemsSource="{StaticResource WeightInfo}"
+                        IndependentValueBinding="{Binding Path=weightDate}"
+                        DependentValueBinding="{Binding weight}" />
+                    </charting:Chart.Series>
+                </charting:Chart>
+
+            </UserControl>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>
