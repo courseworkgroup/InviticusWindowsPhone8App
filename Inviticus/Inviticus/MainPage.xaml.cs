@@ -29,6 +29,7 @@ namespace Inviticus
         {
             
             InitializeComponent();
+            webBrowser.Source = new Uri("https://www.google.com/search?client=opera&q=baby+news&sourceid=opera&ie=UTF-8&oe=UTF-8#q=news+for+babies", UriKind.RelativeOrAbsolute);
             Loaded += MainPage_Loaded;
 
             // Set the data context of the listbox control to the sample data

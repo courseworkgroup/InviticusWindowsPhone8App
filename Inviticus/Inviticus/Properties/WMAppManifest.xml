@@ -2,7 +2,7 @@
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
   <App xmlns="" ProductID="{bead8643-333f-431f-a79e-a9e4e3c28142}" Title="Inviticus" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Inviticus author" Description="An app to replace that immunization card, keep up with your babies development on the go" Publisher="Inviticus" PublisherID="{bc2f23d2-6e6f-44cc-86d9-a8b4952161f9}">
-    <IconPath IsRelative="true" IsResource="false">IconicTileMediumLarge.png</IconPath>
+    <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
       <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
@@ -16,9 +16,9 @@
     <Tokens>
       <PrimaryToken TokenID="InviticusToken" TaskName="_default">
         <TemplateFlip>
-          <SmallImageURI IsRelative="true" IsResource="false">IconicTileMediumLarge.png</SmallImageURI>
+          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\IconicTileSmall.png</SmallImageURI>
           <Count>0</Count>
-          <BackgroundImageURI IsRelative="true" IsResource="false">IconicTileMediumLarge.png</BackgroundImageURI>
+          <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\IconicTileMediumLarge.png</BackgroundImageURI>
           <Title>Inviticus</Title>
           <BackContent>
           </BackContent>

@@ -105,7 +105,7 @@ namespace Inviticus
             }
             catch
             {
-                bitmapImage = new BitmapImage(new Uri(@"Assets/Photo0277_edited.jpg", UriKind.Relative));
+                SolidColorBrush blueBrush = new SolidColorBrush(Colors.Cyan);
             }
         }
 

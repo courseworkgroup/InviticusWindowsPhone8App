@@ -14,8 +14,8 @@
     shell:SystemTray.IsVisible="False">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Image Source="/Assets/image3.jpg" Stretch="Fill"/>
+    <Grid x:Name="LayoutRoot" Background="Cyan">
+        <Image Source="/Assets/ApplicationIcon.png" Stretch="Uniform"/>
     </Grid>
 
 </phone:PhoneApplicationPage>

@@ -22,13 +22,13 @@
             <!--Panorama item one-->
             <phone:PanoramaItem Header="categories">              
                     <StackPanel Grid.Row="1">
-                        <TextBlock Text="profile" TextWrapping="Wrap" Style="{StaticResource PhoneTextAccentStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" Tap="Profile_Tap"/>
+                        <TextBlock Text="profile" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" Tap="Profile_Tap"/>
                         <TextBlock Text="tap to view the baby's profile" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                        <TextBlock Text="weight" TextWrapping="Wrap" Style="{StaticResource PhoneTextAccentStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" Tap="Weight_Tap"/>
+                        <TextBlock Text="weight" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" Tap="Weight_Tap"/>
                         <TextBlock Text="tap to add weight for the child" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                        <TextBlock Text="immunizations" TextWrapping="Wrap" Style="{StaticResource PhoneTextAccentStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" Tap="Immunization_Tap" />
+                        <TextBlock Text="immunizations" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" Tap="Immunization_Tap" />
                         <TextBlock Text="tap to view the immunization status" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                        <TextBlock Text="development charts" TextWrapping="Wrap" Style="{StaticResource PhoneTextAccentStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" Tap="Chart_Tap"/>
+                        <TextBlock Text="development charts" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" Tap="Chart_Tap"/>
                         <TextBlock Text="tap to view the weight and development charts" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
                     </StackPanel>
             </phone:PanoramaItem>
@@ -41,7 +41,7 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105" Width="432">
                                 <StackPanel Width="311" Margin="8,-7,0,0">
-                                    <TextBlock Text="{Binding Immunisation}" TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextAccentStyle}" FontSize="{StaticResource PhoneFontSizeLarge}" />
+                                    <TextBlock Text="{Binding Immunisation}" TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeLarge}" />
                                     <TextBlock Text="{Binding Date}" TextWrapping="Wrap" Margin="10,-2,10,0" Style="{StaticResource PhoneTextSubtleStyle}" />
                                 </StackPanel>
                             </StackPanel>
@@ -53,7 +53,8 @@
             <!--Panorama item three-->
             <phone:PanoramaItem Header="what's new" Orientation="Horizontal">
                 <Grid>
-                    <phone:LongListSelector Margin="0,-38,-22,2" ItemsSource="{Binding Items3}">
+                    <phone:WebBrowser Name="webBrowser"/>
+                    <!--<phone:LongListSelector Margin="0,-38,-22,2" ItemsSource="{Binding Items3}">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,9,0,0">
@@ -65,7 +66,7 @@
                                 </StackPanel>
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
-                    </phone:LongListSelector>
+                    </phone:LongListSelector>-->
                    
                 </Grid>
             </phone:PanoramaItem>
