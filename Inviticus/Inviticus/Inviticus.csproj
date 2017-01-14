@@ -112,8 +112,10 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Baby.cs" />
+    <Compile Include="Model\DataContext\GetWHOChildGrowthStandards.cs" />
     <Compile Include="Model\ImmunisationData.cs" />
     <Compile Include="Model\Weight.cs" />
+    <Compile Include="Model\WHOChildGrowthStandards.cs" />
     <Compile Include="NavigatedEventArgs.cs" />
     <Compile Include="Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
@@ -198,6 +200,8 @@
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
+    <Compile Include="Model\WeightForAgeBirthTo5Years_Boys.cs" />
+    <Compile Include="Model\WeightForAgeBirthTo5Years_Girls.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\image3.jpg" />
@@ -278,16 +282,18 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Phone.Controls, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Phone.Controls.Toolkit">
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=8.0.1.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
       <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\malmike21\Downloads\Compressed\WPChartDemo\WPChartDemo\WPChartDemo\Bin\Debug\System.Windows.Controls.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.1\lib\wp80\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit">
-      <HintPath>C:\Users\malmike21\Downloads\Compressed\WPChartDemo\WPChartDemo\WPChartDemo\Bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
-    </Reference>
+    <Reference Include="Syncfusion.SfChart.WP8, Version=14.1800.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Inviticus.Model;
+using Inviticus.Model.DataContext;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Linq;
@@ -17,6 +20,16 @@ namespace Inviticus
         public int babyID { get; set; }
 
         public BitmapImage bitmapImage { get; private set; }
+
+        public ObservableCollection<WHOChildGrowthStandards> childGrowth { get; set; }
+
+        public GetWHOChildGrowthStandards growthStandardards = new GetWHOChildGrowthStandards();
+
+        public ObservableCollection<Weight> p10 { get; set; }
+
+        public ObservableCollection<Weight> p50 { get; set; }
+
+        public ObservableCollection<Weight> p75 { get; set; }
 
         public bool IsApplicationInstancePreserved { get; private set; }
 
@@ -114,7 +127,50 @@ namespace Inviticus
             saveBabyPhoto(stream, "BackgroundImage");
             setBackGroundImage();
         }
+
+        public void getWHOChildGrowthStandards(string json)
+        {
+            this.childGrowth = growthStandardards.DataElements(json);
+        }
+
+        public void computeWHOGrowthStandards(Baby baby, int index)
+        {
+            ObservableCollection<Weight> p10List = new ObservableCollection<Weight>();
+            ObservableCollection<Weight> p50List = new ObservableCollection<Weight>();
+            ObservableCollection<Weight> p75List = new ObservableCollection<Weight>();
+            int i = 0;
+            foreach (WHOChildGrowthStandards child in this.childGrowth)
+            {
+                i++;
+                Weight weight = new Weight();
+                Weight weight2 = new Weight();
+                Weight weight3 = new Weight();
+                DateTime dt = Convert.ToDateTime(baby.BirthDate).AddMonths(child.Month);
+                String date = (dt.Month + "/" + dt.Day + "/" + dt.Year).ToString();
+                weight.Date = date;
+                weight.BabyWeight = (child.P10).ToString();
+                p10List.Add(weight);
+
+                weight2.Date = date;
+                weight2.BabyWeight = (child.P50).ToString();
+                p50List.Add(weight2);
+
+                weight3.Date = date;
+                weight3.BabyWeight = (child.P75).ToString();
+                p75List.Add(weight3);
+
+                if (i == index) break;
+            }
+
+            this.p10 = p10List;
+            this.p50 = p50List;
+            this.p75 = p75List;
+        }
     }
 
-    
+    public class WeightInfo
+    {
+        public String Date { get; set; }
+        public String BabyWeight { get; set; }
+    }
 }
